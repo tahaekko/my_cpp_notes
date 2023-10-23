@@ -5,19 +5,22 @@ using namespace std;
 int main( int ac, char **av)
 {
 	std::string str = "   Hello world Hello ";
+	string to_find ("Hello");
+	string replaced ("suckers");
+	size_t	found = 0;
 
 	cout << str.length() << endl;
 
 	if (str.empty())
 		std::cout << "here we are" << endl;
 	//func discover
-	size_t found = str.find("Hello");
-	cout << found << endl;
-	string needl("Hello");
-	string to_rep("FUCK YOUR MOM");
-	str = str.erase(found, needl.length());
-	str = str.insert(found, to_rep);
-	cout << str << endl;
+	while ((found = str.find(to_find, found)) != string::npos)
+	{
+		cout << found << endl;
+		str = str.erase(found, to_find.length());
+		str = str.insert(found, replaced);
+		found++;
+	}
 
-	cout << str.length() << endl;
+	cout << str << endl;
 }
