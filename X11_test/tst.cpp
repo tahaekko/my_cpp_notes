@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <SDL2/begin_code.h>
 #include <iostream>
 
 int main()
@@ -9,11 +10,11 @@ int main()
         return -1;
     }
 
-    SDL_Window *window = SDL_CreateWindow("SDL2 Window",
-                                          SDL_WINDOWPOS_CENTERED,
-                                          SDL_WINDOWPOS_CENTERED,
-                                          680, 480,
-                                          0);
+	SDL_Window *window = SDL_CreateWindow("SDL2 Window",
+											SDL_WINDOWPOS_CENTERED,
+											SDL_WINDOWPOS_CENTERED,
+											680, 480,
+											0);
 
     if(!window)
     {
@@ -28,7 +29,11 @@ int main()
         std::cout << "Failed to get the surface from the window\n";
         return -1;
     }
+    SDL_Surface *image;
 
+	image = SDL_LoadBMP("tt.png");
+	if (image == NULL)
+		std::cout << "Load image err" << std::endl;
     SDL_UpdateWindowSurface(window);
 
     SDL_Delay(5000);
