@@ -3,7 +3,7 @@
 
 // Rectangle rectb;   // default constructor called
 // Rectangle rectc(); // function declaration (default constructor NOT called)
-// Rectangle rectd{}; // default constructor called 
+// Rectangle rectd{}; // default constructor called
 
 
 class Rectangle
@@ -22,6 +22,7 @@ class Rectangle
         }
 };
 
+//Way to set values
 Rectangle::Rectangle(int x, int y) : width(x), height(y)
 {
     std::cout << "Ready !" << std::endl;
@@ -40,7 +41,7 @@ int main()
 {
     Rectangle *rect , *rect1;
 
-    rect = new Rectangle (5,3);  
+    rect = new Rectangle (5,3);
     rect1 = new Rectangle (5,3);
 
     Rectangle res = *rect1 + *rect;

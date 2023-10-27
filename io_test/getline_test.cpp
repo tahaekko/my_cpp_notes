@@ -3,14 +3,14 @@
 
 using namespace std;
 
-std::string ft_ctos(const char *s)
+string ft_ctos(const char *s)
 {
   int i = 0;
   std::string ret;
 
   while (s[i] != '\0')
   {
-    ret.append(1, s[i++]);    
+    ret.append(1, s[i++]);
   }
   return (ret);
 }
@@ -22,11 +22,11 @@ int main(int ac, char **av)
       return 1;
   std::string s1 = ft_ctos(av[1]);
   std::string s2 = ft_ctos(av[2]);
-  
-  ifstream in_file (s1);
-  ofstream out_file (s2);
-  
-  if ( in_file.is_open())
+
+  ifstream in_file (s1); // input file stream
+  ofstream out_file (s2); // output file stream
+
+  if ( in_file.is_open()) // check if file success open
   {
     while (getline(in_file, line))
     {

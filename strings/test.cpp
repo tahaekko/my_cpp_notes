@@ -18,4 +18,8 @@ int main()
 
     f(a);
     std::cout << a<< std::endl;
+
+    std::string str = unicod "\u1F600";
+    std::cout << str;
+
 }

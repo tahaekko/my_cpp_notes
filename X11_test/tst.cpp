@@ -4,38 +4,40 @@
 
 int main()
 {
-    if(SDL_Init(SDL_INIT_VIDEO) < 0)
-    {
-        std::cout << "Failed to initialize the SDL2 library\n";
-        return -1;
-    }
+	SDL_Window *window = nullptr;
+	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+		std::cerr << SDL_GetError() << std::endl;
+	else
+		std::cout << "video init sucess" << std::endl;
 
-	SDL_Window *window = SDL_CreateWindow("SDL2 Window",
-											SDL_WINDOWPOS_CENTERED,
-											SDL_WINDOWPOS_CENTERED,
-											680, 480,
-											0);
+	window = SDL_CreateWindow("ZEB!", 0, 2500, 640 , 480, SDL_WINDOW_SHOWN);
 
-    if(!window)
-    {
-        std::cout << "Failed to create window\n";
-        return -1;
-    }
+	bool	running = 1;
 
-    SDL_Surface *window_surface = SDL_GetWindowSurface(window);
+	while (running)
+	{
+		SDL_Event event;
 
-    if(!window_surface)
-    {
-        std::cout << "Failed to get the surface from the window\n";
-        return -1;
-    }
-    SDL_Surface *image;
+		while (SDL_PollEvent(&event))
+		{
+			if (event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE)
+				running = 0;
+			if (event.type == SDL_MOUSEMOTION)
+				std::cout << "mouse has been moved \n";
+			if (event.type == SDL_KEYDOWN)
+			{
+				if (event.key.keysym.sym == SDLK_0)
+					std::cout << "0 pressed \n";
+				if (event.key.keysym.sym == SDLK_w)
+					std::cout << "move up \n";
+				if (event.key.keysym.sym == SDLK_d)
+					std::cout << "move right \n";
 
-	image = SDL_LoadBMP("tt.png");
-	if (image == NULL)
-		std::cout << "Load image err" << std::endl;
-    SDL_UpdateWindowSurface(window);
+			}
+		}
+	}
 
-    SDL_Delay(5000);
+	SDL_DestroyWindow(window);
+	SDL_Quit();
 }
 
