@@ -41,10 +41,25 @@ int	ft_test(int flags)
 int main( void )
 {
 	struct fruit f;
-
+	int pr;
 	std::cout << X << std::endl;
 	std::cout << Y << std::endl;
-	ft_test((int)(X|Y));
+
+	pr = (X|Y|Z|K);
+	pr &= ~Z;
+	std::cout << "pr "<< pr << std::endl;
+
+	ft_test(pr);
+
+	int orr = 123;
+	int& ref = orr;
+	int	*p = &orr;
+
+	std::cout << &orr << std::endl;
+	std::cout << &ref << std::endl;
+	std::cout << p << std::endl;
+
+
 	// ft_bin(ft_test(X|Y));
 	// cout << endl;
 

@@ -46,6 +46,7 @@ int main ()
 {
 	int m = 5;
 
+
 	using n::namelookup;
 
 	namelookup lol;
